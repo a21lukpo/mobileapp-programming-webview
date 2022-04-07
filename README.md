@@ -1,42 +1,82 @@
 
 # Rapport
 
-**Skriv din rapport här!**
-
-_Du kan ta bort all text som finns sedan tidigare_.
-
-## Följande grundsyn gäller dugga-svar:
-
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
-
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
-
+Rename your App. Hint: `res/values/strings.xml`
+Jag ändrade namn på appen inuti "strings.xml" filen.
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
-    }
-}
+<string name="app_name">Lukkes app</string>
 ```
 
-Bilder läggs i samma mapp som markdown-filen.
+Enable Internet access for your App. Hint: `AndroidManifest.xml`
+För att tillåta användning av internet i appen använde jag mig av uses permission funktionen.
 
-![](android.png)
+```
+<uses-permission android:name="android.permission.INTERNET"/>
+```
 
-Läs gärna:
+Create a WebView element in the layout file `content_main.xml` by replacing the existing `TextView`
+För att lösa detta gick jag in i "content_main.xml" och ändrade "TextView" till "WebView".
 
-- Boulos, M.N.K., Warren, J., Gong, J. & Yue, P. (2010) Web GIS in practice VIII: HTML5 and the canvas element for interactive online mapping. International journal of health geographics 9, 14. Shin, Y. &
-- Wunsche, B.C. (2013) A smartphone-based golf simulation exercise game for supporting arthritis patients. 2013 28th International Conference of Image and Vision Computing New Zealand (IVCNZ), IEEE, pp. 459–464.
-- Wohlin, C., Runeson, P., Höst, M., Ohlsson, M.C., Regnell, B., Wesslén, A. (2012) Experimentation in Software Engineering, Berlin, Heidelberg: Springer Berlin Heidelberg.
+```
+<WebView
+
+/>
+```
+
+Give the WebView an ID. Hint: `android:id="@+id/my_webview"`
+Inuti det WebView element som tidigare skapades sattes ett ID. Detta ID fick sedan namnet "my_webview".
+
+```
+android:id="@+id/my_webview"
+```
+
+Create a private member variable called `myWebView` of the type `WebView` and instantiate it in `onCreate()`. Hint: `findViewById()`
+Inuti "MainActivity.java" skapades en "WebView" variabel. Denna användes sedan i "onCreate()" där funktionen "findViewById()" användes för att hitta variabeln.
+
+```
+WebView myWebView;
+myWebView = findViewById(R.id.my_webview);
+```
+
+Locate the WebView element created in step 1 using the WebView ID
+Detta löstes på samma sätt som tidigare uppgift. Det vill säga genom att använda "findViewById()".
+
+```
+myWebView = findViewById(R.id.my_webview);
+```
+
+Enable Javascript execution in your WebViewClient. Hint: `getSettings()` and `setJavaScriptEnabled()`
+För att lösa detta användes "getSettings()" och därefter "setJavaScriptEnabled()" där värdet inuti parentesen är "true" för att tillåta Javascript i appen.
+
+```
+myWebView.getSettings().setJavaScriptEnabled(true);
+```
+
+Add a html page as an asset.
+För att lösa detta skapades en ny asset mapp. Inuti denna mapp skapades sedan en html fil med enkel html kod inuti.
+
+Implement `showExternalWebPage()` and `showInternalWebPage()`. Hint: `loadUrl()`.
+För att lösa detta användes funktionen "myWebView.loadUrl" för att länka till både den interna samt den externa hemsidan genom appen.
+
+```
+myWebView.loadUrl("https://wwwlab.iit.his.se/a21lukpo/Mobilappdesign/AppPrototyp/");
+
+myWebView.loadUrl("file:///android_asset/vadjagvill.html");
+```
+
+Call `showExternalWebPage()` and `showInternalWebPage()` when menu dropdown is clicked. Hint: `onOptionsItemSelected()`.
+Inuti funktionen "onOptionsItemSelected()" la jag till "showExternalWebPage" samt "showInternalWebPage" för att kalla på dessa funktioner.showExternalWebPage
+
+```
+showExternalWebPage();
+
+showInternalWebPage();
+```
+
+
+```
+
+```
+
+![](extern.png)
+![](intern.png)
