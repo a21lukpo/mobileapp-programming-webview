@@ -73,10 +73,5 @@ showExternalWebPage();
 showInternalWebPage();
 ```
 
-
-```
-
-```
-
 ![](extern.png)
 ![](intern.png)
